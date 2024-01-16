@@ -1,0 +1,17 @@
+BoundedContext GestionAlquileres
+BoundedContext GestionCliente
+BoundedContext GestionPagos
+BoundedContext GestionVehiculos
+BoundedContext Seguridad
+
+ContextMap Prueba1{
+    contains GestionAlquileres, GestionCliente, GestionPagos, GestionVehiculos, Seguridad
+
+    GestionAlquileres [U,OHS,PL]->[D] GestionVehiculos
+    GestionCliente [U]->[D,ACL] Seguridad
+    GestionAlquileres [U,OHS]->[D] GestionCliente 
+    GestionAlquileres [U,OHS]->[D] GestionPagos
+    GestionPagos [U]->[D,ACL] Seguridad
+    GestionCliente [D]<-[U,OHS,PL] GestionVehiculos
+
+}
